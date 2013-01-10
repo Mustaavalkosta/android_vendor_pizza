@@ -10,7 +10,3 @@ PRODUCT_COPY_FILES += \
     vendor/pizza/prebuilt/common/xbin/su-0.9.9:system/xbin/su \
     vendor/pizza/prebuilt/common/etc/hosts:system/etc/hosts \
     vendor/pizza/prebuilt/common/etc/init.d/98pizzabean:system/etc/init.d/98pizzabean
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.config.nocheckin=1 \
-	ro.config.htc.nocheckin=1
