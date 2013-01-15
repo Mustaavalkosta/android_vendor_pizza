@@ -33,7 +33,14 @@ sed -i '/^$/d' $PWD/temp_hosts1
 ##
 ## File created by Mustaavalkosta's hosts script
 ##
-## $DATE
+## Created: $DATE
+##
+## Sources:
+## http://hosts-file.net/ad_servers.asp
+## http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+## http://winhelp2002.mvps.org/hosts.txt
+## http://www.ismeh.com/HOSTS
+## http://someonewhocares.org/hosts/hosts
 ##
 127.0.0.1 localhost
 
