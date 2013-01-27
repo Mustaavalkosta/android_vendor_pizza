@@ -5,3 +5,6 @@ PRODUCT_BRAND := pizzabean
 PRODUCT_COPY_FILES += \
     vendor/pizza/prebuilt/common/app/Cerberus-2.3.apk:system/app/Cerberus.apk \
     vendor/pizza/prebuilt/common/etc/hosts:system/etc/hosts
+
+PRODUCT_PACKAGES += \
+	ZeroXBenchmark
