@@ -1,0 +1,14 @@
+# sqlite3 once a day
+0  0  *  *  *  /system/etc/init.d/99pizzabean sqlite3
+
+# trim /data every 4 hours
+0 0,4,8,12,16,20 *  *  *  /system/etc/init.d/99pizzabean fstrim /data
+
+# trim /cache every 4 hours
+0 0,4,8,12,16,20 *  *  *  /system/etc/init.d/99pizzabean fstrim /cache
+
+# trim /devlog every 8 hours
+0 0,8,16 *  *  *  /system/etc/init.d/99pizzabean fstrim /devlog
+
+# trim /system once a week
+0  0  *  *  0  /system/etc/init.d/99pizzabean fstrim /system

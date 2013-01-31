@@ -1,0 +1,45 @@
+#!/system/bin/sh
+# Pizzabean tweaks to be used together
+# with crond.
+#
+# Tweaks are from various sources.
+# Don't hate me for not linking those.
+
+LOGDIR=/data/local
+LOGFILE=$LOGDIR/pb.log
+logMsg() { busybox echo `date +"%Y-%M-%d %H:%M:%S"`" // "$1 >> $LOGFILE; };
+
+if [ ! -f $LOGFILE ]; then
+    busybox touch $LOGFILE
+    busybox chmod 0644 $LOGFILE
+    logMsg "Logfile created"
+fi
+
+if [ "$1" = "fstrim" ]; then
+    if [ "$2" = "/system" ]; then
+        busybox mount -o remount,rw /system /system
+    fi
+    FSTRIM_OUT=`fstrim $2 2>&1`
+    FSTRIM_RET=$?
+    if [ "$2" = "/system" ]; then
+        busybox mount -o remount,ro /system /system
+    fi
+    if [ $FSTRIM_RET -eq 0 ]; then
+        logMsg "fstrimmed $2"
+    else
+        logMsg "fstrim failed on $2"
+        logMsg "    $FSTRIMG_OUT"
+    fi
+elif [ "$1" = "sqlite3" ]; then
+    logMsg "Cleaning databases"
+    for i in `find /data -iname "*.db"` ; do
+        sqlite3 $i 'VACUUM;'; >> $LOGFILE
+        sqlite3 $i 'REINDEX;'; >> $LOGFILE
+    done
+    logMsg "Cleaning finished"
+else
+    if [ -z `pidof crond` ]; then
+        crond
+        logMsg "crond (`pidof crond`) started"
+    fi
+fi
