@@ -42,4 +42,12 @@ else
         crond
         logMsg "crond (`pidof crond`) started"
     fi
+    busybox sysctl -w vm.oom_kill_allocating_task=0;
+    busybox sysctl -w vm.panic_on_oom=0;
+    busybox sysctl -w vm.overcommit_memory=1;
+    busybox sysctl -w vm.swappiness=20;
+    busybox sysctl -w kernel.panic_on_oops=1;
+    busybox sysctl -w kernel.panic=30;
+    busybox sysctl -w kernel.random.read_wakeup_threshold=1376;
+    echo "2048,3584,19712,22784,25600,28672" > /sys/module/lowmemorykiller/parameters/minfree;
 fi
