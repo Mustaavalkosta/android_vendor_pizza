@@ -1,5 +1,5 @@
-# sqlite3 once a day
-0  0  *  *  *  /system/etc/init.d/99pizzabean sqlite3
+# sqlite3 once a week
+0  0  *  *  0  /system/etc/init.d/99pizzabean sqlite3
 
 # trim /data every 4 hours
 0 */4 *  *  *  /system/etc/init.d/99pizzabean fstrim /data
