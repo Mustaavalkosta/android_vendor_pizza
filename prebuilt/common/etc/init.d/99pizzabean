@@ -42,7 +42,7 @@ else
         crond
         logMsg "crond (`pidof crond`) started"
     fi
-    sleep 60
-    busybox sysctl -w vm.min_free_kbytes=15769
-    echo "2048,3584,19712,22784,25600,28672" > /sys/module/lowmemorykiller/parameters/minfree
+    #sleep 60
+    #busybox sysctl -w vm.min_free_kbytes=15769
+    #echo "2048,3584,19712,22784,25600,28672" > /sys/module/lowmemorykiller/parameters/minfree
 fi
