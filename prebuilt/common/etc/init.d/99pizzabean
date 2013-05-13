@@ -7,7 +7,7 @@
 
 LOGDIR=/data/local
 LOGFILE=$LOGDIR/pb.log
-logMsg() { busybox echo `date +"%Y-%M-%d %H:%M:%S"`" // "$1 >> $LOGFILE; };
+logMsg() { busybox echo `date +"%Y-%m-%d %H:%M:%S"`" // "$1 >> $LOGFILE; };
 
 if [ ! -f $LOGFILE ]; then
     busybox touch $LOGFILE
@@ -46,6 +46,4 @@ else
     busybox sysctl -w vm.dirty_background_ratio=55
     busybox sysctl -w vm.dirty_ratio=90
     busybox sysctl -w vm.vfs_cache_pressure=20
-    #busybox sysctl -w vm.min_free_kbytes=15769
-    #echo "2048,3584,19712,22784,25600,28672" > /sys/module/lowmemorykiller/parameters/minfree
 fi
