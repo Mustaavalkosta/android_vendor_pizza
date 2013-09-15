@@ -42,8 +42,4 @@ else
         crond
         logMsg "crond (`pidof crond`) started"
     fi
-    sleep 60
-    busybox sysctl -w vm.dirty_background_ratio=55
-    busybox sysctl -w vm.dirty_ratio=90
-    busybox sysctl -w vm.vfs_cache_pressure=20
 fi
